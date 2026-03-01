@@ -493,6 +493,15 @@ body {
     line-height: 1.8;
 }
 
+.service-quote {
+    color: var(--primary-green);
+    font-style: italic;
+    border-left: 4px solid var(--primary-green);
+    margin: 25px 0;
+    padding: 15px 20px;
+    background-color: rgba(139, 197, 63, 0.05);
+}
+
 .service-detail h3 {
     color: var(--primary-blue);
     font-size: 24px;
