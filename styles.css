@@ -499,7 +499,7 @@ body {
     border-left: 4px solid var(--primary-green);
     margin: 25px 0;
     padding: 15px 20px;
-    background-color: rgba(139, 197, 63, 0.05);
+    background-color: rgba(139, 197, 63, 0.02);
 }
 
 .service-detail h3 {
