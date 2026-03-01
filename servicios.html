@@ -5,6 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios - BIDCSA</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background-color: #fff;
+            border-radius: 10px;
+            max-width: 750px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #003366;
+        }
+
+        .modal-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .modal h2 {
+            color: #003366;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .modal h3 {
+            color: #003366;
+            font-size: 18px;
+            margin: 25px 0 10px;
+        }
+
+        .modal p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .modal blockquote {
+            color: #8BC53F;
+            font-style: italic;
+            border-left: 4px solid #8BC53F;
+            margin: 20px 0;
+            padding: 12px 20px;
+            background-color: rgba(139, 197, 63, 0.05);
+        }
+
+        .modal ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal ul li {
+            padding: 6px 0;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .modal .benefits-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .modal .benefits-list li {
+            color: #333;
+            font-weight: 500;
+            padding-left: 5px;
+        }
+
+        /* Service Cards Grid */
+        .services-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card-clickable {
+            background-color: #fff;
+            padding: 35px 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #8BC53F;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card-clickable:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-card-clickable .card-icon {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .service-card-clickable h3 {
+            color: #003366;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .service-card-clickable p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #8BC53F;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-card-clickable:hover .card-btn {
+            background-color: #7AB62F;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -39,156 +200,195 @@
         <div class="container">
             <div class="services-intro">
                 <h2>Servicios Especializados para el Sector de la Construcción</h2>
-                <p>En BIDCSA ofrecemos una gama completa de servicios de ingeniería y gestión diseñados para garantizar el éxito de su proyecto de construcción. Nuestro equipo de expertos trabaja con dedicación para entregar resultados excepcionales que superen sus expectativas.</p>
+                <p>En BIDCSA ofrecemos una gama completa de servicios de ingeniería y gestión diseñados para garantizar el éxito de su proyecto de construcción. Haz clic en cada servicio para conocer más detalles.</p>
             </div>
 
-            <!-- 1. GERENCIA DE PROYECTOS -->
-            <div class="service-detail">
-                <div class="service-content">
-                    <div class="service-icon">🏗️</div>
-                    <h2>Gerencia de Proyectos de Construcción</h2>
-                    <p class="service-description">Planeación y control integral del proyecto a través de la programación, dirección y ejecución de las diferentes etapas de la vida del mismo.</p>
+            <div class="services-cards-grid">
 
-                    <blockquote class="service-quote">
-                        <em>"Planeamos y ejecutamos su proyecto de forma integral; cumpliendo con la calidad técnica requerida y las normas, trámites y responsivas que exige la industria dentro del marco de costos y tiempo planeados para asegurar la rentabilidad de su inversión"</em>
-                    </blockquote>
-
-                    <h3>Alcance del Servicio:</h3>
-                    <ul class="service-list">
-                        <li>Coordinación de diseño y equipos multidisciplinarios</li>
-                        <li>Programación y control de obra</li>
-                        <li>Gestión de contratos y subcontratos</li>
-                        <li>Control de calidad y cumplimiento normativo</li>
-                        <li>Gestión de riesgos y solución de conflictos</li>
-                        <li>Coordinación con autoridades y permisos</li>
-                        <li>Reportes ejecutivos periódicos</li>
-                        <li>Administración de cambios y órdenes de trabajo</li>
-                    </ul>
-
-                    <h3>Beneficios:</h3>
-                    <ul class="benefits-list">
-                        <li>✓ Optimización de recursos y tiempos de ejecución</li>
-                        <li>✓ Reducción de riesgos y contingencias</li>
-                        <li>✓ Comunicación efectiva entre todos los involucrados</li>
-                        <li>✓ Cumplimiento de objetivos de presupuesto y calidad</li>
-                    </ul>
+                <!-- Card 1: Gerencia de Proyectos -->
+                <div class="service-card-clickable" onclick="openModal('modal-gerencia')">
+                    <div class="card-icon">🏗️</div>
+                    <h3>Gerencia de Proyectos de Construcción</h3>
+                    <p>Planeación y control integral del proyecto a través de la programación, dirección y ejecución de las diferentes etapas.</p>
+                    <span class="card-btn">Ver más</span>
                 </div>
-            </div>
 
-            <!-- 2. SUPERVISIÓN Y AUDITORÍA -->
-            <div class="service-detail">
-                <div class="service-content">
-                    <div class="service-icon">🔍</div>
-                    <h2>Supervisión y Auditoría Técnica de Obras</h2>
-                    <p class="service-description">Ofrecemos a inversionistas e instituciones públicas nuestros servicios de supervisión y auditoría técnica y financiera, evaluación del cumplimiento de la normatividad ambiental, legal y de seguridad, así como análisis de desviaciones de ruta crítica y plan de programación.</p>
-
-                    <blockquote class="service-quote">
-                        <em>"Verificamos que el trabajo técnico sea realizado de acuerdo a lo establecido en planos y especificaciones. Evaluamos la calidad y avance financiero del proyecto en términos de la inversión realizada en terreno, obra ejecutada y pagos anticipados, actuando siempre bajo principios de honestidad, ética y profesionalismo"</em>
-                    </blockquote>
-
-                    <h3>Alcance del Servicio:</h3>
-                    <ul class="service-list">
-                        <li>Supervisión técnica en campo permanente</li>
-                        <li>Verificación de especificaciones y planos</li>
-                        <li>Control de calidad de materiales y procesos constructivos</li>
-                        <li>Auditorías técnicas y revisión de avances</li>
-                        <li>Inspección de pruebas de laboratorio</li>
-                        <li>Bitácora electrónica y documentación fotográfica</li>
-                        <li>Verificación del cumplimiento normativo</li>
-                        <li>Emisión de reportes y minutas de supervisión</li>
-                        <li>Control de no conformidades y acciones correctivas</li>
-                    </ul>
-
-                    <h3>Beneficios:</h3>
-                    <ul class="benefits-list">
-                        <li>✓ Garantía de calidad en la construcción</li>
-                        <li>✓ Cumplimiento de especificaciones técnicas</li>
-                        <li>✓ Detección temprana de desviaciones</li>
-                        <li>✓ Reducción de retrabajos y costos adicionales</li>
-                    </ul>
+                <!-- Card 2: Supervisión -->
+                <div class="service-card-clickable" onclick="openModal('modal-supervision')">
+                    <div class="card-icon">🔍</div>
+                    <h3>Supervisión y Auditoría Técnica de Obras</h3>
+                    <p>Supervisión y auditoría técnica y financiera, evaluación del cumplimiento de normatividad ambiental, legal y de seguridad.</p>
+                    <span class="card-btn">Ver más</span>
                 </div>
-            </div>
 
-            <!-- 3. INGENIERÍA FINANCIERA Y VALUACIÓN -->
-            <div class="service-detail">
-                <div class="service-content">
-                    <div class="service-icon">📊</div>
-                    <h2>Ingeniería Financiera y Valuación Profesional</h2>
-
-                    <h3>Avalúos profesionales de activos inmobiliarios, comerciales, industriales, catastrales y de maquinaria y equipo.</h3>
-                    <p class="service-description">A través de modelos cuantitativos determinamos el valor de sus activos a partir de sus características particulares y las del mercado correspondiente. Contamos con capacidad de desarrollo de estudios de valor bajo hipótesis de mercado, estimaciones de valor por posicionamiento, verificación de garantías del inmueble/maquinaria y estudios de factibilidad.</p>
-
-                    <h3>Diseño y formulación de proyectos de inversión.</h3>
-                    <p class="service-description">Los proyectos de inversión y estudios costo-beneficio le brindarán un panorama de rentabilidad de la inversión y la sensibilidad del proyecto a los riesgos con base en posibles escenarios económico–financieros.</p>
-
-                    <blockquote class="service-quote">
-                        <em>"En BIDCSA contamos con personal facultado legalmente y con trayectoria de alto desempeño ético que respalda la confiabilidad de su avalúo o proyecto de inversión; nos apegamos a las normas y metodologías establecidas por las autoridades de acuerdo a la naturaleza del proyecto"</em>
-                    </blockquote>
-
-                    <h3>Alcance del Servicio:</h3>
-                    <ul class="service-list">
-                        <li>Valuaciones periódicas de avance físico-financiero</li>
-                        <li>Generación de estimaciones y números generadores</li>
-                        <li>Análisis de sobrecostos y ajustes de precio</li>
-                        <li>Conciliación de diferencias contractuales</li>
-                        <li>Estructuración financiera de proyectos</li>
-                        <li>Análisis de viabilidad y rentabilidad (TIR, VPN)</li>
-                        <li>Evaluación de escalatorias e indexación</li>
-                        <li>Soporte en finiquitos y cierre de contratos</li>
-                        <li>Due diligence técnico-financiero</li>
-                    </ul>
-
-                    <h3>Beneficios:</h3>
-                    <ul class="benefits-list">
-                        <li>✓ Valuaciones transparentes y justificadas</li>
-                        <li>✓ Control financiero preciso del proyecto</li>
-                        <li>✓ Optimización del retorno de inversión</li>
-                        <li>✓ Minimización de conflictos contractuales</li>
-                    </ul>
+                <!-- Card 3: Ingeniería Financiera -->
+                <div class="service-card-clickable" onclick="openModal('modal-financiera')">
+                    <div class="card-icon">📊</div>
+                    <h3>Ingeniería Financiera y Valuación Profesional</h3>
+                    <p>Avalúos profesionales de activos y diseño de proyectos de inversión con modelos cuantitativos y análisis de rentabilidad.</p>
+                    <span class="card-btn">Ver más</span>
                 </div>
-            </div>
 
-            <!-- 4. INGENIERÍA DE COSTOS Y PRESUPUESTOS -->
-            <div class="service-detail">
-                <div class="service-content">
-                    <div class="service-icon">💰</div>
-                    <h2>Ingeniería de Costos y Presupuestos</h2>
-
-                    <h3>Elaboración de propuestas para concurso de obra pública o privada, formulación de presupuestos, análisis de precios unitarios, estimación de cobro, escalatorias y avance de la inversión.</h3>
-                    <p class="service-description">Apego a la normativa vigente para presentación de presupuestos, estudios de precios unitarios y propuestas completas para concurso de obra, incluyendo investigación local de los insumos del proyecto y requisitos de presentación. En caso requerido, también podemos presentar el paquete de propuesta de obra; así nuestros servicios le permitirán optimizar el uso de sus recursos.</p>
-
-                    <blockquote class="service-quote">
-                        <em>"En BIDCSA contamos el know-how necesario para la elaboración de presupuestos para sus obras, incluyendo cuantificación y análisis de precios unitarios."</em>
-                    </blockquote>
-
-                    <blockquote class="service-quote">
-                        <em>"Nuestros expertos cuentan con más de 20 años de experiencia en la materia, así como con una extensa base de datos de localidades e instancias gubernamentales para ubicar en términos reales y normativos el presupuesto de la obra y/o estimaciones de cobro"</em>
-                    </blockquote>
-
-                    <h3>Alcance del Servicio:</h3>
-                    <ul class="service-list">
-                        <li>Elaboración de presupuestos base y estimaciones de costo</li>
-                        <li>Análisis de precios unitarios y rendimientos</li>
-                        <li>Cuantificación de conceptos y volúmenes de obra</li>
-                        <li>Control presupuestal y análisis de variaciones</li>
-                        <li>Proyecciones financieras y flujos de efectivo</li>
-                        <li>Optimización de costos y valor ingenieril</li>
-                        <li>Análisis de propuestas y licitaciones</li>
-                        <li>Estudios de factibilidad económica</li>
-                    </ul>
-
-                    <h3>Beneficios:</h3>
-                    <ul class="benefits-list">
-                        <li>✓ Presupuestos precisos y confiables</li>
-                        <li>✓ Control efectivo del gasto de inversión</li>
-                        <li>✓ Identificación de oportunidades de ahorro</li>
-                        <li>✓ Toma de decisiones informada basada en datos</li>
-                    </ul>
+                <!-- Card 4: Costos y Presupuestos -->
+                <div class="service-card-clickable" onclick="openModal('modal-costos')">
+                    <div class="card-icon">💰</div>
+                    <h3>Ingeniería de Costos y Presupuestos</h3>
+                    <p>Elaboración de presupuestos, análisis de precios unitarios y propuestas para concursos de obra pública y privada.</p>
+                    <span class="card-btn">Ver más</span>
                 </div>
-            </div>
 
+            </div>
         </div>
     </section>
+
+    <!-- MODAL 1: Gerencia de Proyectos -->
+    <div class="modal-overlay" id="modal-gerencia" onclick="closeModalOnOverlay(event, 'modal-gerencia')">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-gerencia')">&times;</button>
+            <div class="modal-icon">🏗️</div>
+            <h2>Gerencia de Proyectos de Construcción</h2>
+            <p>Planeación y control integral del proyecto a través de la programación, dirección y ejecución de las diferentes etapas de la vida del mismo.</p>
+
+            <blockquote>
+                <em>"Planeamos y ejecutamos su proyecto de forma integral; cumpliendo con la calidad técnica requerida y las normas, trámites y responsivas que exige la industria dentro del marco de costos y tiempo planeados para asegurar la rentabilidad de su inversión"</em>
+            </blockquote>
+
+            <h3>Alcance del Servicio:</h3>
+            <ul>
+                <li>Coordinación de diseño y equipos multidisciplinarios</li>
+                <li>Programación y control de obra</li>
+                <li>Gestión de contratos y subcontratos</li>
+                <li>Control de calidad y cumplimiento normativo</li>
+                <li>Gestión de riesgos y solución de conflictos</li>
+                <li>Coordinación con autoridades y permisos</li>
+                <li>Reportes ejecutivos periódicos</li>
+                <li>Administración de cambios y órdenes de trabajo</li>
+            </ul>
+
+            <h3>Beneficios:</h3>
+            <ul class="benefits-list">
+                <li>✓ Optimización de recursos y tiempos de ejecución</li>
+                <li>✓ Reducción de riesgos y contingencias</li>
+                <li>✓ Comunicación efectiva entre todos los involucrados</li>
+                <li>✓ Cumplimiento de objetivos de presupuesto y calidad</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Supervisión y Auditoría -->
+    <div class="modal-overlay" id="modal-supervision" onclick="closeModalOnOverlay(event, 'modal-supervision')">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-supervision')">&times;</button>
+            <div class="modal-icon">🔍</div>
+            <h2>Supervisión y Auditoría Técnica de Obras</h2>
+            <p>Ofrecemos a inversionistas e instituciones públicas nuestros servicios de supervisión y auditoría técnica y financiera, evaluación del cumplimiento de la normatividad ambiental, legal y de seguridad, así como análisis de desviaciones de ruta crítica y plan de programación.</p>
+
+            <blockquote>
+                <em>"Verificamos que el trabajo técnico sea realizado de acuerdo a lo establecido en planos y especificaciones. Evaluamos la calidad y avance financiero del proyecto en términos de la inversión realizada en terreno, obra ejecutada y pagos anticipados, actuando siempre bajo principios de honestidad, ética y profesionalismo"</em>
+            </blockquote>
+
+            <h3>Alcance del Servicio:</h3>
+            <ul>
+                <li>Supervisión técnica en campo permanente</li>
+                <li>Verificación de especificaciones y planos</li>
+                <li>Control de calidad de materiales y procesos constructivos</li>
+                <li>Auditorías técnicas y revisión de avances</li>
+                <li>Inspección de pruebas de laboratorio</li>
+                <li>Bitácora electrónica y documentación fotográfica</li>
+                <li>Verificación del cumplimiento normativo</li>
+                <li>Emisión de reportes y minutas de supervisión</li>
+                <li>Control de no conformidades y acciones correctivas</li>
+            </ul>
+
+            <h3>Beneficios:</h3>
+            <ul class="benefits-list">
+                <li>✓ Garantía de calidad en la construcción</li>
+                <li>✓ Cumplimiento de especificaciones técnicas</li>
+                <li>✓ Detección temprana de desviaciones</li>
+                <li>✓ Reducción de retrabajos y costos adicionales</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Ingeniería Financiera -->
+    <div class="modal-overlay" id="modal-financiera" onclick="closeModalOnOverlay(event, 'modal-financiera')">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-financiera')">&times;</button>
+            <div class="modal-icon">📊</div>
+            <h2>Ingeniería Financiera y Valuación Profesional</h2>
+
+            <h3>Avalúos profesionales de activos inmobiliarios, comerciales, industriales, catastrales y de maquinaria y equipo.</h3>
+            <p>A través de modelos cuantitativos determinamos el valor de sus activos a partir de sus características particulares y las del mercado correspondiente. Contamos con capacidad de desarrollo de estudios de valor bajo hipótesis de mercado, estimaciones de valor por posicionamiento, verificación de garantías del inmueble/maquinaria y estudios de factibilidad.</p>
+
+            <h3>Diseño y formulación de proyectos de inversión.</h3>
+            <p>Los proyectos de inversión y estudios costo-beneficio le brindarán un panorama de rentabilidad de la inversión y la sensibilidad del proyecto a los riesgos con base en posibles escenarios económico–financieros.</p>
+
+            <blockquote>
+                <em>"En BIDCSA contamos con personal facultado legalmente y con trayectoria de alto desempeño ético que respalda la confiabilidad de su avalúo o proyecto de inversión; nos apegamos a las normas y metodologías establecidas por las autoridades de acuerdo a la naturaleza del proyecto"</em>
+            </blockquote>
+
+            <h3>Alcance del Servicio:</h3>
+            <ul>
+                <li>Valuaciones periódicas de avance físico-financiero</li>
+                <li>Generación de estimaciones y números generadores</li>
+                <li>Análisis de sobrecostos y ajustes de precio</li>
+                <li>Conciliación de diferencias contractuales</li>
+                <li>Estructuración financiera de proyectos</li>
+                <li>Análisis de viabilidad y rentabilidad (TIR, VPN)</li>
+                <li>Evaluación de escalatorias e indexación</li>
+                <li>Soporte en finiquitos y cierre de contratos</li>
+                <li>Due diligence técnico-financiero</li>
+            </ul>
+
+            <h3>Beneficios:</h3>
+            <ul class="benefits-list">
+                <li>✓ Valuaciones transparentes y justificadas</li>
+                <li>✓ Control financiero preciso del proyecto</li>
+                <li>✓ Optimización del retorno de inversión</li>
+                <li>✓ Minimización de conflictos contractuales</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Costos y Presupuestos -->
+    <div class="modal-overlay" id="modal-costos" onclick="closeModalOnOverlay(event, 'modal-costos')">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-costos')">&times;</button>
+            <div class="modal-icon">💰</div>
+            <h2>Ingeniería de Costos y Presupuestos</h2>
+
+            <h3>Elaboración de propuestas para concurso de obra pública o privada, formulación de presupuestos, análisis de precios unitarios, estimación de cobro, escalatorias y avance de la inversión.</h3>
+            <p>Apego a la normativa vigente para presentación de presupuestos, estudios de precios unitarios y propuestas completas para concurso de obra, incluyendo investigación local de los insumos del proyecto y requisitos de presentación. En caso requerido, también podemos presentar el paquete de propuesta de obra; así nuestros servicios le permitirán optimizar el uso de sus recursos.</p>
+
+            <blockquote>
+                <em>"En BIDCSA contamos el know-how necesario para la elaboración de presupuestos para sus obras, incluyendo cuantificación y análisis de precios unitarios."</em>
+            </blockquote>
+
+            <blockquote>
+                <em>"Nuestros expertos cuentan con más de 20 años de experiencia en la materia, así como con una extensa base de datos de localidades e instancias gubernamentales para ubicar en términos reales y normativos el presupuesto de la obra y/o estimaciones de cobro"</em>
+            </blockquote>
+
+            <h3>Alcance del Servicio:</h3>
+            <ul>
+                <li>Elaboración de presupuestos base y estimaciones de costo</li>
+                <li>Análisis de precios unitarios y rendimientos</li>
+                <li>Cuantificación de conceptos y volúmenes de obra</li>
+                <li>Control presupuestal y análisis de variaciones</li>
+                <li>Proyecciones financieras y flujos de efectivo</li>
+                <li>Optimización de costos y valor ingenieril</li>
+                <li>Análisis de propuestas y licitaciones</li>
+                <li>Estudios de factibilidad económica</li>
+            </ul>
+
+            <h3>Beneficios:</h3>
+            <ul class="benefits-list">
+                <li>✓ Presupuestos precisos y confiables</li>
+                <li>✓ Control efectivo del gasto de inversión</li>
+                <li>✓ Identificación de oportunidades de ahorro</li>
+                <li>✓ Toma de decisiones informada basada en datos</li>
+            </ul>
+        </div>
+    </div>
 
     <section class="why-choose">
         <div class="container">
@@ -246,11 +446,38 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 BIDCSA. Todos los derechos reservados.</p>
+                <p>&copy; 2024 BIDCSA. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnOverlay(event, id) {
+            if (event.target === document.getElementById(id)) {
+                closeModal(id);
+            }
+        }
+
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(function(modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
