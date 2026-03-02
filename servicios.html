@@ -112,9 +112,15 @@
         /* Service Cards Grid */
         .services-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .services-cards-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .service-card-clickable {
@@ -441,25 +447,30 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contacto</h4>
-                    <p>Email: info@bidcsa.com</p>
+                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e881868e87a88a818c8b9b89c68b8785">[email&#160;protected]</a></p>
                     <p>Teléfono: +52 (55) XXXX-XXXX</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 BIDCSA. Todos los derechos reservados.</p>
+                <p>&copy; 2025 BIDCSA. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
     <script>
         function openModal(id) {
-            document.getElementById(id).classList.add('active');
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.remove('active');
             document.body.style.overflow = '';
         }
 
@@ -471,13 +482,11 @@
 
         // Cerrar con tecla Escape
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal-overlay.active').forEach(function(modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                document.querySelectorAll('.modal-overlay.active').forEach(function(overlay) {
+                    overlay.classList.remove('active');
                 });
+                document.body.style.overflow = '';
             }
         });
     </script>
-</body>
-</html>
